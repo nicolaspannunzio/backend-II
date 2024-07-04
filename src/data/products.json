@@ -1,0 +1,173 @@
+{
+  "data": [
+    {
+      "title": "samsung galaxy",
+      "description": "smartphone",
+      "code": "PRD123",
+      "price": 879.87,
+      "status": true,
+      "stock": 45,
+      "category": "tecno",
+      "thumbnails": [
+        "http://example.com/image1.jpg"
+      ],
+      "id": 1
+    },
+    {
+      "title": "samsung galaxy 2",
+      "description": "smartphone",
+      "code": "PRD123",
+      "price": 1479.87,
+      "status": true,
+      "stock": 25,
+      "category": "tecno",
+      "thumbnails": [
+        "http://example.com/image2.jpg"
+      ],
+      "id": 2
+    },
+    {
+      "title": "Auriculares Inalámbricos Xiaomi Redmi Bud",
+      "description": "auriculares inalámbricos",
+      "code": "PRD123",
+      "price": 379.14,
+      "status": true,
+      "stock": 10,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 3
+    },
+    {
+      "title": "Kit Starlink De Internet Vía Satélite",
+      "description": "kit de internet",
+      "code": "PRD123",
+      "price": 2460.55,
+      "status": true,
+      "stock": 20,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 4
+    },
+    {
+      "title": "Kit Teclado Y Mouse Inalambrico Mk235 Logitech",
+      "description": "kit de teclado y mouse",
+      "code": "PRD123",
+      "price": 230.88,
+      "status": true,
+      "stock": 160,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 5
+    },
+    {
+      "title": "Adaptador Bluetooth TP-Link UB500",
+      "description": "Antenas wireless",
+      "code": "PRD123",
+      "price": 150.33,
+      "status": true,
+      "stock": 35,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 6
+    },
+    {
+      "title": "Joystick inalámbrico Sony PlayStation Dualshock 4 ps4",
+      "description": "Joystick para play",
+      "code": "PRD123",
+      "price": 240.13,
+      "status": true,
+      "stock": 88,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 7
+    },
+    {
+      "title": "Disco sólido interno Kingston",
+      "description": "disco externo",
+      "code": "PRD123",
+      "price": 475,
+      "status": true,
+      "stock": 15,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 8
+    },
+    {
+      "title": "Cable Tipo C A Usb C Carga Rapida Datos Celular",
+      "description": "cable de conexion",
+      "code": "PRD123",
+      "price": 45.93,
+      "status": true,
+      "stock": 300,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 9
+    },
+    {
+      "title": "Proyector Luz Nocturna Bluetooth Reproductor De Música Usb",
+      "description": "proyector",
+      "code": "PRD123",
+      "price": 142.11,
+      "status": true,
+      "stock": 25,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 10
+    },
+    {
+      "title": "Router Wifi Tp Link",
+      "description": "router",
+      "code": "PRD123",
+      "price": 100.95,
+      "status": true,
+      "stock": 58,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 11
+    },
+    {
+      "title": "Lector de tarjetas Ugreen 4 en 1 Micro SD",
+      "description": "lector de tarjetas",
+      "code": "PRD123",
+      "price": 50.55,
+      "status": true,
+      "stock": 100,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 12
+    },
+    {
+      "title": "Motorola Moto G13",
+      "description": "smartphone",
+      "code": "PRD123",
+      "price": 299.99,
+      "status": true,
+      "stock": 10,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 13
+    },
+    {
+      "title": "Xiaomi Redmi 13C Dual SIM",
+      "description": "smartphone",
+      "code": "PRD123",
+      "price": 599.99,
+      "status": true,
+      "stock": 10,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 14
+    },
+    {
+      "title": "Apple iPhone 15 Pro",
+      "description": "smartphone",
+      "code": "PRD123",
+      "price": 2399.99,
+      "status": true,
+      "stock": 25,
+      "category": "tecno",
+      "thumbnails": [],
+      "id": 15
+    }
+  ]
+}
