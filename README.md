@@ -1,8 +1,8 @@
-# Proyecto Backend I: Gestión de Productos y Carritos
+# Proyecto Backend I: Gestión de Productos y Carritos de compra en un e-commerce
 
 Este proyecto es una aplicación backend construida con Node.js y Express que permite gestionar productos y carritos de compra, con la persistencia de datos realizada mediante archivos JSON.
 
-## Tabla de Contenidos
+## Contenidos
 
 -   [Entorno de Trabajo](#entorno-de-trabajo)
 -   [Instalación](#instalaci%C3%B3n)
@@ -105,7 +105,7 @@ Todos los métodos fueron testeados utilizando Insomnia. Insomnia es una herrami
 
 ----------
 
-Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, y las rutas y métodos disponibles. 
+Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, las rutas y métodos disponibles. 
 
 ---
 ***Desarrollador***
