@@ -24,14 +24,13 @@ class ProductManager {
 
   async saveProducts() {
     try {
-      // Asegurarse de que la carpeta 'data' exista antes de guardar
       await fs.promises.mkdir(dataFolderPath, { recursive: true });
       await fs.promises.writeFile(
         this.path,
         JSON.stringify({ data: this.productList }, null, 2)
       );
     } catch (error) {
-      console.error("Error al guardar productos:", error);
+      console.log(error);
     }
   }
 
@@ -46,9 +45,7 @@ class ProductManager {
 
   async addProduct(product) {
     product.id =
-      this.productList.length > 0
-        ? this.productList[this.productList.length - 1].id + 1
-        : 1;
+      this.productList.length > 0 ? this.productList[this.productList.length - 1].id + 1 : 1;
 
     if (
       !product.title ||
@@ -74,7 +71,7 @@ class ProductManager {
       return p;
     });
     if (!productFound) {
-      throw new Error("Producto no encontrado");
+      throw new Error("product not found");
     }
     await this.saveProducts(); 
   }
@@ -83,9 +80,10 @@ class ProductManager {
     const initialLength = this.productList.length;
     this.productList = this.productList.filter((p) => p.id !== id); 
     if (this.productList.length === initialLength) {
-      throw new Error("Producto no encontrado");
+      return false;
     }
-    await this.saveProducts(); 
+    await this.saveProducts();
+    return true; 
   }
 }
 

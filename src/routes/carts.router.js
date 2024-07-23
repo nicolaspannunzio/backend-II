@@ -6,7 +6,6 @@ import path from 'path';
 const router = Router();
 const cartManager = new CartManager(path.join(__dirname, 'data', 'carts.json'));
 
-// Ruta raíz POST / para crear un nuevo carrito
 router.post('/', async (req, res) => {
     try {
         const newCart = await cartManager.createCart();
@@ -30,7 +29,6 @@ router.get('/:cid', async (req, res) => {
     }
 });
 
-// Ruta POST /:cid/product/:pid para agregar un producto al carrito
 router.post('/:cid/product/:pid', async (req, res) => {
     const { cid, pid } = req.params;
     try {

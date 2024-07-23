@@ -5,16 +5,15 @@ const router = Router();
 const productManager = new ProductManager();
 
 productManager.loadProducts().then(() => {
-    //console.log("Productos cargados");
 }).catch((err) => {
-    console.error("Error al cargar productos:", err);
+    console.log(err);
 });
 
 router.get("/", async (req, res) => {
     try {
         const limit = req.query.limit ? parseInt(req.query.limit) : null;
         if (limit !== null && (isNaN(limit) || limit <= 0)) {
-            return res.status(400).send('El parámetro limit debe ser un número positivo.');
+            return res.status(400).send('The parameter limit must be a positive number.');
         }
 
         const products = await productManager.getProductList();
@@ -32,7 +31,7 @@ router.get("/:pid", async (req, res) => {
         if (product) {
             res.json(product);
         } else {
-            res.status(404).send("Producto no encontrado");
+            res.status(404).send("Product not found");
         }
     } catch (error) {
         res.status(500).send(error.message);
@@ -68,7 +67,7 @@ router.put("/:pid", async (req, res) => {
         const existingProduct = await productManager.getProductById(parseInt(pid));
 
         if (!existingProduct) {
-            return res.status(404).send("Producto no encontrado");
+            return res.status(404).send("Product not found");
         }
 
         const updatedProduct = {
@@ -85,7 +84,7 @@ router.put("/:pid", async (req, res) => {
 
         await productManager.updateProduct(parseInt(pid), updatedProduct);
 
-        res.status(203).json({ message: "Producto actualizado", updatedProduct });
+        res.status(203).json({ message: "updated product", updatedProduct });
     } catch (error) {
         res.status(500).send(error.message);
     }

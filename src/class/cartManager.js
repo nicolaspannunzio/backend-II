@@ -53,14 +53,10 @@ export class CartManager {
     let updatedCart;
     try {
       this.carts = await this.getCarts();
-      console.log("Carts:", this.carts);
-
       const cartIndex = this.carts.findIndex((cart) => cart.id === id);
-      console.log("Looking for cart with ID:", id);
-      console.log("Cart Index:", cartIndex);
 
       if (cartIndex === -1) {
-        throw new Error("Carrito no encontrado");
+        throw new Error("Cart not found");
       }
 
       const cart = this.carts[cartIndex];
@@ -77,10 +73,9 @@ export class CartManager {
       this.carts[cartIndex] = cart;
 
       await this.saveCarts();
-
       return updatedCart;
+
     } catch (error) {
-      console.error("Error en addProductToCart:", error);
       throw error;
     }
   }
