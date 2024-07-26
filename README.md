@@ -127,9 +127,7 @@ Como parte de este desafío se agregaron rutas para mejorar la interacción en t
 -   Los clientes conectados a la vista `realTimeProducts.handlebars` reciben estas actualizaciones y actualizan automáticamente la lista de productos mostrada.
 
 ------------
-Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, y las rutas y métodos disponibles. 
 
----
 ***Desarrollador***
 
 Nicolás A. Pannunzio - Desarrollador, creador y responsable de este proyecto.
