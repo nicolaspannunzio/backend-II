@@ -1,5 +1,7 @@
 # Proyecto Backend I: Gestión de Productos y Carritos de compra en un e-commerce
 
+### Primera pre-entrega
+
 Este proyecto es una aplicación backend construida con Node.js y Express que permite gestionar productos y carritos de compra, con la persistencia de datos realizada mediante archivos JSON.
 
 ## Contenidos
@@ -104,8 +106,28 @@ Todos los métodos fueron testeados utilizando Insomnia. Insomnia es una herrami
 -   Multer se puede integrar para manejar la subida de archivos, aunque en este proyecto específico no se detallaron rutas que lo utilicen.
 
 ----------
+### Segunda pre-entrega
+## Websockets
 
-Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, las rutas y métodos disponibles. 
+Como parte de este desafío se agregaron rutas para mejorar la interacción en tiempo real con la lista de productos, se ha integrado el motor de plantillas Handlebars y Socket.IO en el proyecto. A continuación, se detallo la configuración y las nuevas vistas añadidas.
+
+**Configuración del Servidor**
+
+-   **Handlebars**: Se ha configurado Handlebars como el motor de plantillas para renderizar vistas dinámicas en el servidor.
+-   **Socket.IO**: Se ha instalado y configurado Socket.IO para manejar la comunicación en tiempo real entre el cliente y el servidor.
+
+**Vistas**
+
+-   **home.handlebars**: Esta vista muestra una lista de todos los productos agregados hasta el momento. Está diseñada para ofrecer una visualización básica de los productos en el sistema.
+-   **realTimeProducts.handlebars**: Accesible a través del endpoint `/realtimeproducts`, esta vista muestra la lista de productos utilizando WebSockets. Gracias a la integración con Socket.IO, cualquier cambio en la lista de productos (como la adición o eliminación de productos) se actualiza automáticamente en esta vista en tiempo real.
+
+**Implementación de WebSockets**
+
+-   Cuando se agrega o elimina un producto, el servidor emite eventos a través de WebSocket para notificar a los clientes sobre los cambios.
+-   Los clientes conectados a la vista `realTimeProducts.handlebars` reciben estas actualizaciones y actualizan automáticamente la lista de productos mostrada.
+
+------------
+Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, y las rutas y métodos disponibles. 
 
 ---
 ***Desarrollador***
