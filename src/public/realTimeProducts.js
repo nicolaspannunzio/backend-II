@@ -35,8 +35,10 @@ const updateProduct = () => {
     socket.emit('update-product', { id, updatedProduct });
 };
 
-const deleteProduct = () => {
-    const id = document.getElementById('delete-id').value.trim();
+const deleteProduct = (id) => {
+    if (typeof id === 'undefined') {
+        id = document.getElementById('delete-id').value.trim();
+    }
     if (!id) {
         alert("Please enter a product ID.");
         return;
@@ -58,8 +60,12 @@ socket.on('realtime', (products) => {
             <h2>${product.title}</h2>
             <p>Id: ${product.id}</p>
             <p>Stock: ${product.stock}</p>
-            <button onclick="deleteProduct(${product.id})">Delete</button>
+            <button onclick="deleteProduct('${product.id}')">Delete</button>
         `;
         productList.appendChild(productElement);
     });
+});
+
+socket.on('error', (errorMessage) => {
+    alert(errorMessage);
 });

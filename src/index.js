@@ -5,11 +5,11 @@ import { __dirname } from "./utils.js";
 import handlebars from "express-handlebars";
 import homeRoute from "./routes/home.router.js";
 import { Server } from "socket.io";
-import realTimeProducts from "./routes/realTimeProducts.router.js";
+import realTimeProductsRoute from "./routes/realTimeProducts.router.js";
 import ProductManager from "./class/productManager.js";
 
 const app = express();
-const PORT = 8080 || 9000;
+const PORT = 8080 || 3000;
 
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
@@ -21,7 +21,7 @@ app.use(express.static(__dirname + "/public"));
 app.use("/api/products", productRoutes);
 app.use("/api/carts", cartRoutes);
 app.use("/home", homeRoute);
-app.use("/realTimeProducts", realTimeProducts);
+app.use("/realtimeproducts", realTimeProductsRoute);
 
 const httpServer = app.listen(PORT, () => {
   console.log("server ready on port " + PORT);
@@ -43,10 +43,10 @@ socketServer.on("connection", async (socket) => {
     }
     await productManager.addProduct(product);
     const updatedProductsList = await productManager.getProductList();
-    socketServer.emit("realtime", updatedProductsList);
-});
+    socketServer.emit("realtime", updatedProductsList); // Emitir a todos los clientes
+  });
 
-socket.on("update-product", async ({ id, updatedProduct }) => {
+  socket.on("update-product", async ({ id, updatedProduct }) => {
     if (!id || !updatedProduct) {
         socket.emit("error", "Invalid product data.");
         return;
@@ -58,10 +58,10 @@ socket.on("update-product", async ({ id, updatedProduct }) => {
     }
     await productManager.updateProduct(Number(id), updatedProduct);
     const updatedProductsList = await productManager.getProductList();
-    socketServer.emit("realtime", updatedProductsList);
-});
+    socketServer.emit("realtime", updatedProductsList); // Emitir a todos los clientes
+  });
 
-socket.on("delete-product", async (id) => {
+  socket.on("delete-product", async (id) => {
     if (!id) {
         socket.emit("error", "Invalid product ID.");
         return;
@@ -69,9 +69,9 @@ socket.on("delete-product", async (id) => {
     const result = await productManager.deleteProduct(Number(id));
     if (result) {
         const updatedProductsList = await productManager.getProductList();
-        socketServer.emit("realtime", updatedProductsList);
+        socketServer.emit("realtime", updatedProductsList); // Emitir a todos los clientes
     } else {
         socket.emit("error", "Product not found.");
     }
-});
+  });
 });
