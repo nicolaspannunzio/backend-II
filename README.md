@@ -109,7 +109,7 @@ Todos los métodos fueron testeados utilizando Insomnia. Insomnia es una herrami
 ### Segunda pre-entrega
 ## Websockets
 
-Como parte de este desafío se agregaron rutas para mejorar la interacción en tiempo real con la lista de productos, se ha integrado el motor de plantillas Handlebars y Socket.IO en el proyecto. A continuación, se detallo la configuración y las nuevas vistas añadidas.
+Como parte de este desafío se agregaron rutas para mejorar la interacción en tiempo real con la lista de productos, se ha integrado el motor de plantillas Handlebars y Socket.IO en el proyecto. A continuación,  detallo la configuración y las nuevas vistas añadidas.
 
 **Configuración del Servidor**
 
@@ -179,9 +179,7 @@ Estas modificaciones aseguran que la aplicación no solo cumpla con los requisit
  
  
 ------------
-Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, y las rutas y métodos disponibles. 
 
----
 ***Desarrollador***
 
 Nicolás A. Pannunzio - Desarrollador, creador y responsable de este proyecto.
