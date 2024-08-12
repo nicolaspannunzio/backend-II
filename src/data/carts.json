@@ -4,11 +4,11 @@
       "id": 1,
       "products": [
         {
-          "id": "66b9246fac9c634477e2f6c1",
+          "id": 3,
           "quantity": 1
         },
         {
-          "id": "66b9246fac9c634477e2f6f4",
+          "id": 6,
           "quantity": 2
         }
       ]

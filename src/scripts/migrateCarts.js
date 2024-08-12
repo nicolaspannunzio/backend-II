@@ -1,28 +1,55 @@
+import fs from 'fs/promises';
 import mongoose from 'mongoose';
-import { cartModel } from '../models/cart.model.js'; 
-import cartsData from '../data/carts.json';
+import connectDB from '../db.js';
+import { cartModel } from '../models/cart.model.js';
+import { productModel } from '../models/product.model.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-async function migrateCarts() {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const migrateCarts = async () => {
   try {
-    await mongoose.connect(process.env.DB_URI);
+    await connectDB();
 
-    const carts = cartsData.data;
+    const dataPath = path.join(__dirname, '../data/carts.json');
+    const data = await fs.readFile(dataPath, 'utf-8');
+    const parsedData = JSON.parse(data);
+    const carts = parsedData.data;
 
-    const formattedCarts = carts.map(cart => ({
-      products: cart.products.map(p => ({
-        product: mongoose.Types.ObjectId(p.product),
-        quantity: p.quantity
-      }))
-    }));
+    if (!Array.isArray(carts)) {
+      throw new Error('Carts data is not an array');
+    }
 
-    await cartModel.insertMany(formattedCarts);
+    for (const cart of carts) {
+      const productsWithObjectIds = [];
+      for (const product of cart.products) {
+        const foundProduct = await productModel.findOne({ id: product.id }).exec();
+        if (foundProduct) {
+          productsWithObjectIds.push({
+            quantity: product.quantity,
+            product: foundProduct._id
+          });
+        } else {
+          console.warn(`Product with id ${product.id} not found`);
+        }
+      }
 
-    console.log('Carts migrated successfully!');
+      await cartModel.updateOne(
+        { id: cart.id },
+        { $set: { products: productsWithObjectIds } },
+        { upsert: true }
+      );
+    }
+
+    console.log('Carts migrated successfully.');
   } catch (error) {
-    console.error('Error migrating carts', error);
+    console.error('Error migrating carts:', error.message || error);
   } finally {
-    mongoose.disconnect();
+    await mongoose.connection.close();
+    console.log('Database connection closed.');
   }
-}
+};
 
 migrateCarts();

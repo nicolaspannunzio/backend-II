@@ -16,6 +16,10 @@ const productSubSchema = new Schema({
 }, { _id: false });
 
 const cartSchema = new Schema({
+  id: {
+    type: String,
+    required: false,
+  },
   products: {
     type: [productSubSchema],
     default: []
