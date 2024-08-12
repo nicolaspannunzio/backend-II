@@ -74,9 +74,42 @@ export class CartManager {
 
       await this.saveCarts();
       return updatedCart;
-
     } catch (error) {
+      console.error("Error in addProductToCart:", error);
       throw error;
     }
+  }
+
+  async deleteProductFromCart(cartId, productId) {
+    const cart = await this.getCartById(cartId);
+    if (!cart) throw new Error("Cart not found");
+
+    const productIndex = cart.products.findIndex((p) => p.id === productId);
+    if (productIndex === -1) throw new Error("Product not found in cart");
+
+    cart.products.splice(productIndex, 1);
+    await this.saveCarts();
+    return cart;
+  }
+
+  async updateCartProducts(cartId, products) {
+    const cart = await this.getCartById(cartId);
+    if (!cart) throw new Error("Cart not found");
+
+    cart.products = products;
+    await this.saveCarts();
+    return cart;
+  }
+
+  async updateProductQuantity(cartId, productId, quantity) {
+    const cart = await this.getCartById(cartId);
+    if (!cart) throw new Error("Cart not found");
+
+    const product = cart.products.find((p) => p.id === productId);
+    if (!product) throw new Error("Product not found in cart");
+
+    product.quantity = quantity;
+    await this.saveCarts();
+    return cart;
   }
 }

@@ -54,6 +54,11 @@ h1 {
 }
 
 /* Styles for RealTimeProducts */
+
+.events {
+    margin-top: 155px;
+}
+
 .products-container-rtp {
     padding: 20px;
     display: flex;

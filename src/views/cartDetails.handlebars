@@ -1,0 +1,26 @@
+<div>
+  <h1>Cart ID: {{cartId}}</h1>
+  <h2>Products in Cart</h2>
+
+  {{#if products.length}}
+    <ul>
+      {{#each products}}
+        <li>
+          <h3>Product ID: {{this.productId}}</h3>
+          <p>Name: {{this.productDetails.name}}</p>
+          <p>Price: ${{this.productDetails.price}}</p>
+          <p>Quantity: {{this.quantity}}</p>
+        </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No products in this cart</p>
+  {{/if}}
+
+  <a href="javascript:history.back()">
+    <button>Go Back</button>
+  </a>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="home.js"></script>

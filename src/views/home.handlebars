@@ -10,9 +10,22 @@
             <p>Price: ${{this.price}}</p>
             <p>Stock: {{this.stock}}</p>
             <p>Id: {{this.id}}</p>
+            <a href="/api/products/{{this._id}}">
+              <button>View Details</button>
+            </a>
           </li>
         {{/each}}
       </ul>
+      {{#if hasPrevPage}}
+        <a href="/api/products?page={{previousPage}}">
+          <button>Previous Page</button>
+        </a>
+      {{/if}}
+      {{#if hasNextPage}}
+        <a href="/api/products?page={{nextPage}}">
+          <button>Next Page</button>
+        </a>
+      {{/if}}
     {{else}}
       <p>No products available</p>
     {{/if}}

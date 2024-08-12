@@ -3,7 +3,7 @@
     {
       "title": "samsung galaxy",
       "description": "smartphone",
-      "code": "PRD123",
+      "code": "PRD001",
       "price": 879.87,
       "status": true,
       "stock": 45,
@@ -16,7 +16,7 @@
     {
       "title": "samsung galaxy 2",
       "description": "smartphone",
-      "code": "PRD123",
+      "code": "PRD002",
       "price": 1479.87,
       "status": true,
       "stock": 25,
@@ -29,7 +29,7 @@
     {
       "title": "Auriculares Inalámbricos Xiaomi Redmi Bud",
       "description": "auriculares inalámbricos",
-      "code": "PRD123",
+      "code": "PRD003",
       "price": 379.14,
       "status": true,
       "stock": 10,
@@ -40,7 +40,7 @@
     {
       "title": "Kit Starlink De Internet Vía Satélite",
       "description": "kit de internet",
-      "code": "PRD123",
+      "code": "PRD004",
       "price": 2460.55,
       "status": true,
       "stock": 20,
@@ -51,7 +51,7 @@
     {
       "title": "Kit Teclado Y Mouse Inalambrico Mk235 Logitech",
       "description": "kit de teclado y mouse",
-      "code": "PRD123",
+      "code": "PRD005",
       "price": 230.88,
       "status": true,
       "stock": 160,
@@ -62,7 +62,7 @@
     {
       "title": "Adaptador Bluetooth TP-Link UB500",
       "description": "Antenas wireless",
-      "code": "PRD123",
+      "code": "PRD006",
       "price": 150.33,
       "status": true,
       "stock": 35,
@@ -73,7 +73,7 @@
     {
       "title": "Disco sólido interno Kingston",
       "description": "disco externo",
-      "code": "PRD123",
+      "code": "PRD008",
       "price": 475,
       "status": true,
       "stock": 15,
@@ -84,7 +84,7 @@
     {
       "title": "Cable Tipo C A Usb C Carga Rapida Datos Celular",
       "description": "cable de conexion",
-      "code": "PRD123",
+      "code": "PRD009",
       "price": 45.93,
       "status": true,
       "stock": 300,
@@ -95,7 +95,7 @@
     {
       "title": "Proyector Luz Nocturna Bluetooth Reproductor De Música Usb",
       "description": "proyector",
-      "code": "PRD123",
+      "code": "PRD010",
       "price": 142.11,
       "status": true,
       "stock": 25,
@@ -106,7 +106,7 @@
     {
       "title": "Router Wifi Tp Link",
       "description": "router",
-      "code": "PRD123",
+      "code": "PRD011",
       "price": 100.95,
       "status": true,
       "stock": 58,
@@ -117,7 +117,7 @@
     {
       "title": "Lector de tarjetas Ugreen 4 en 1 Micro SD",
       "description": "lector de tarjetas",
-      "code": "PRD123",
+      "code": "PRD012",
       "price": 50.55,
       "status": true,
       "stock": 100,
@@ -128,7 +128,7 @@
     {
       "title": "Motorola Moto G13",
       "description": "smartphone",
-      "code": "PRD123",
+      "code": "PRD013",
       "price": 299.99,
       "status": true,
       "stock": 10,
@@ -139,7 +139,7 @@
     {
       "title": "Xiaomi Redmi 13C Dual SIM",
       "description": "smartphone",
-      "code": "PRD123",
+      "code": "PRD014",
       "price": 599.99,
       "status": true,
       "stock": 10,
@@ -150,7 +150,7 @@
     {
       "title": "Apple iPhone 15 Pro",
       "description": "smartphone",
-      "code": "PRD123",
+      "code": "PRD015",
       "price": 2399.99,
       "status": true,
       "stock": 25,

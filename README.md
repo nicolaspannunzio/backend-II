@@ -126,6 +126,58 @@ Como parte de este desafío se agregaron rutas para mejorar la interacción en t
 -   Cuando se agrega o elimina un producto, el servidor emite eventos a través de WebSocket para notificar a los clientes sobre los cambios.
 -   Los clientes conectados a la vista `realTimeProducts.handlebars` reciben estas actualizaciones y actualizan automáticamente la lista de productos mostrada.
 
+-----------
+## Entrega Final Backend 1
+
+### Objetivos Generales
+
+Para esta etapa final, el proyecto se ha actualizado para cumplir con los siguientes objetivos:
+
+1.  **Persistencia en MongoDB**: Se ha integrado MongoDB como sistema principal de persistencia de datos, reemplazando el uso de archivos JSON. Esto proporciona una gestión de datos más robusta y flexible.
+2.  **Endpoints Completos**: Se han definido todos los endpoints necesarios para gestionar productos y carritos, cubriendo las funcionalidades requeridas para la aplicación del e-commerce.
+
+### Objetivos Específicos
+
+1.  **Consultas de Productos**: Se ha mejorado el endpoint `GET /api/products` para soportar filtros avanzados, paginación y ordenamiento de productos. Los cambios incluyen:
+    
+    -   **Query Params**: Se permite la recepción de parámetros opcionales `limit`, `page`, `sort`, y `query`.
+        
+        -   `limit`: Define la cantidad de productos a devolver (por defecto es 10).
+        -   `page`: Especifica la página de resultados (por defecto es 1).
+        -   `query`: Permite buscar productos por categoría o disponibilidad.
+        -   `sort`: Permite ordenar los productos por precio de manera ascendente o descendente.
+    -   **Formato de Respuesta**:
+    El endpoint `GET /api/products` devuelve un objeto con la siguiente estructura:
+
+-   **status**: Indica el estado de la respuesta, que puede ser "success" o "error".
+-   **payload**: Contiene el resultado de los productos solicitados según los parámetros de búsqueda y filtrado.
+-   **totalPages**: El número total de páginas de resultados disponibles.
+-   **prevPage**: El número de la página anterior, si existe.
+-   **nextPage**: El número de la página siguiente, si existe.
+-   **page**: El número de la página actual.
+-   **hasPrevPage**: Un indicador booleano que señala si existe una página previa.
+-   **hasNextPage**: Un indicador booleano que señala si existe una página siguiente.
+-   **prevLink**: Un enlace directo a la página previa, o `null` si no existe.
+-   **nextLink**: Un enlace directo a la página siguiente, o `null` si no existe.
+
+2.  **Gestión de Carritos**: Se han añadido y mejorado los siguientes endpoints en el router de `carts`:
+    
+    -   `DELETE /api/carts/:cid/products/:pid`: Elimina un producto específico del carrito.
+    -   `PUT /api/carts/:cid`: Actualiza el carrito con un arreglo de productos.
+    -   `PUT /api/carts/:cid/products/:pid`: Actualiza únicamente la cantidad de un producto específico en el carrito.
+    -   `DELETE /api/carts/:cid`: Elimina todos los productos del carrito.
+    
+    Además, el modelo de `Carts` ha sido actualizado para que el id de cada producto en la propiedad `products` haga referencia al modelo de `Products`. La ruta `GET /api/carts/:cid` ha sido modificada para incluir un `populate`, permitiendo que al traer todos los productos del carrito se obtengan los detalles completos de los productos.
+    
+2.  **Actualización de Vistas**:
+    
+    -   **`index.handlebars`**: Se ha modificado para mostrar todos los productos con paginación. Además, cada producto puede ser visualizado en detalle en una nueva vista `/products/:pid`, la cual muestra la descripción completa, precio, categoría, etc., y un botón para agregar el producto al carrito. También se ha añadido la funcionalidad de agregar un producto al carrito directamente desde la vista de productos.
+    -   **`/carts/:cid`**: Se ha añadido una vista para visualizar un carrito específico, mostrando solo los productos que pertenecen a ese carrito.
+    
+
+Estas modificaciones aseguran que la aplicación no solo cumpla con los requisitos iniciales, sino que también ofrezca una experiencia más profesional y funcional para la gestión de productos y carritos de compra.
+ 
+ 
 ------------
 Este README proporciona una visión general del proyecto, detalles sobre la configuración del entorno de trabajo, la estructura del proyecto, y las rutas y métodos disponibles. 
 
