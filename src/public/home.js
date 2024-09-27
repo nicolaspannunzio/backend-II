@@ -25,3 +25,28 @@ const updateProductList = (products) => {
 socket.on('realtime', (products) => {
     updateProductList(products);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartBtn = document.getElementById('add-to-cart-btn');
+
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+            const productId = addToCartBtn.getAttribute('data-product-id');
+
+            fetch(`/api/carts/${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ quantity: 1 }) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Product added to cart:', data);
+            })
+            .catch(error => {
+                console.error('Error adding product to cart:', error);
+            });
+        });
+    }
+});

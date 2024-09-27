@@ -1,0 +1,23 @@
+<div>
+  <h1>Cart Details - ID: {{cartId}}</h1>
+  <div class="container-products">
+    {{#if products.length}}
+      <ul>
+        {{#each products}}
+          <li>
+            <p>Product ID: {{this.productId}}</p>
+            <p>Quantity: {{this.quantity}}</p>
+            <p>Name: {{this.productDetails.name}}</p>
+            <p>Price: ${{this.productDetails.price}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    {{else}}
+      <p>No products in this cart.</p>
+    {{/if}}
+  </div>
+  <button id="goBackBtn">Go Back</button>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="cart.js"></script>
