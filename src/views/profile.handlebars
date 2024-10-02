@@ -1,0 +1,10 @@
+<h2>Welcome, <span id="user">{{ user.first_name }} {{ user.last_name }}</span></h2>
+
+<p>Email: {{ user.email }}</p>
+
+<form action="/api/sessions/current" method="GET" aria-label="go back"></form>
+    <button type="submit">Go Back</button>
+</form>
+<form action="/api/sessions/logout" method="POST" aria-label="logout">
+      <button type="submit">Logout</button>
+</form>

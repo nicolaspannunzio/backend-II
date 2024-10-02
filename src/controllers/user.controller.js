@@ -1,0 +1,23 @@
+import UserModel from '../models/user.model.js';
+import { cartModel } from '../models/cart.model.js';
+
+export const registerUser = async (req, res) => {
+    try {
+        const { first_name, last_name, email, age, password } = req.body;
+
+        const newCart = await cartModel.create({ products: [] });
+
+        const newUser = await UserModel.create({
+            first_name,
+            last_name,
+            email,
+            age,
+            password, 
+            cart: newCart._id 
+        });
+
+        res.status(201).json({ message: "User registered successfully", user: newUser });
+    } catch (error) {
+        res.status(500).json({ error: "Error registering user: " + error.message });
+    }
+};

@@ -1,0 +1,21 @@
+<h1>User Login</h1>
+
+<form action="/api/sessions/login" method="POST">
+    <fieldset>
+        <legend>Access data</legend>
+
+        <div>
+            <label for="user"> User: </label>
+            <input type="text" id="user" name="user" required>
+        </div>
+        
+        <div>
+            <label for="password"> Password: </label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </fieldset>
+</form>
