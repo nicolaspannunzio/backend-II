@@ -70,7 +70,10 @@ export const registerUser = async (req, res) => {
             cart: newCart._id, 
         });
 
-        res.status(201).json({ message: "User registered successfully", user: newUser });
+        const { password: _, ...userWithoutPassword } = newUser.toObject();
+
+        res.status(201).json({ message: "User registered successfully", user: userWithoutPassword });
+
     } catch (error) {
         res.status(500).json({ error: "Registration error: " + error.message });
     }

@@ -7,74 +7,81 @@ import { createHash, isValidPassword } from "../utils/util.js";
 const router = Router(); 
 
 router.post("/register", async (req, res) => {
-    let {user, password} = req.body; 
+    let { user, password } = req.body; 
 
     if (!user || !password) {
         return res.status(400).send("User and password are required");
     }
 
     try {
-        const userexists = await userModel.findOne({user}); 
+        const userExists = await userModel.findOne({ user }); 
 
-        if (userexists) {
+        if (userExists) {
             return res.status(400).send("The user already exists");
         }
 
-        const newuser = new userModel({
-            usuario, 
-            password: createHash(password)
+        const newUser = new userModel({
+            user,  
+            password: createHash(password) 
         });
 
-        await newuser.save(); 
+        await newUser.save(); 
 
-        const token = jwt.sign({user: newuser.user}, "coderhouse", {expiresIn: "1h"}); 
+        const token = jwt.sign(
+            { user: newUser.user }, 
+            process.env.JWT_SECRET || "coderhouse", 
+            { expiresIn: "1h" }
+        );
 
         res.cookie("coderCookieToken", token, {
             maxAge: 3600000, 
             httpOnly: true
-        })
+        });
 
         res.redirect("/api/sessions/current"); 
 
     } catch (error) {
         res.status(500).send("Internal server error"); 
     }
-})
+});
 
 router.post("/login", async (req, res) => {
-    let {user, password} = req.body; 
+    let { user, password } = req.body; 
 
     if (!user || !password) {
         return res.status(400).send("User and password are required");
     }
 
     try {
-        const userfound = await userModel.findOne({ user }); 
+        const userFound = await userModel.findOne({ user }); 
 
-        if (!userfound) {
+        if (!userFound) {
             return res.status(401).send("Unidentified user"); 
         }
 
-        if(!isValidPassword(password, userfound)) {
+        if(!isValidPassword(password, userFound)) {
             return res.status(401).send("Invalid password"); 
         }
 
-        const token = jwt.sign({ usuario: userfound.user, role: userfound.role }, "coderhouse", {expiresIn: "1h"}); 
+        const token = jwt.sign(
+            { user: userFound.user, role: userFound.role }, 
+            process.env.JWT_SECRET || "coderhouse", 
+            { expiresIn: "1h" }
+        );
 
-         res.cookie("coderCookieToken", token, {
-             maxAge: 3600000, 
-             httpOnly: true
-         })
- 
-         res.redirect("/api/sessions/current"); 
+        res.cookie("coderCookieToken", token, {
+            maxAge: 3600000, 
+            httpOnly: true
+        });
 
+        res.redirect("/api/sessions/current");
 
     } catch (error) {
         res.status(500).send("Internal server error"); 
     }
 });
 
-router.get("/profile", passport.authenticate("current", {session: false}), (req, res) => {
+router.get("/profile", passport.authenticate("current", { session: false }), (req, res) => {
     res.render("profile", { user: req.user.user }); 
 });
 
@@ -83,12 +90,12 @@ router.post("/logout", (req, res) => {
     res.redirect("/login"); 
 });
 
-router.get("/admin", passport.authenticate("current", {session: false}), (req, res) => {
-    if(req.user.rol !== "admin") {
+router.get("/admin", passport.authenticate("current", { session: false }), (req, res) => {
+    if(req.user.role !== "admin") {  
         return res.status(403).send("Access denied"); 
     }
 
     res.render("admin");
 });
 
-export default router; 
+export default router;
