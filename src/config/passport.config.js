@@ -7,13 +7,13 @@ const ExtractJwt = jwt.ExtractJwt;
 const initializePassport = () => {
   passport.use("current", new JWTStrategy({
         jwtFromRequest: ExtractJwt.fromExtractors([cookieExtractor]),
-        secretOrKey: "coderhouse",
+        secretOrKey: process.env.JWT_SECRET,
       },
       async (jwt_payload, done) => {
         try {
           return done(null, jwt_payload);
         } catch (error) {
-          return done(error, false, { message: "Error processing JWT" });
+          return done(error, false);
         }
       }));
 };

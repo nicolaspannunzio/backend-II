@@ -38,7 +38,7 @@ app.use("/api/carts", cartRoutes);
 app.use("/home", homeRoute);
 app.use("/realtimeproducts", realTimeProductsRoute);
 app.use('/api/sessions', sessionRoutes);
-app.use("/api/users/", usersRouter);
+app.use("/api/users", usersRouter);
 
 app.use('*', (req, res) => {
   return res.status(404).send('<h1>Error 404: Not Found</h1>');

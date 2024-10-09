@@ -90,7 +90,7 @@ router.post("/logout", (req, res) => {
     res.redirect("/login"); 
 });
 
-router.get("/admin", passport.authenticate("current", { session: false }), (req, res) => {
+router.get("/current", passport.authenticate("current", { session: false }), (req, res) => {
     if(req.user.role !== "admin") {  
         return res.status(403).send("Access denied"); 
     }
