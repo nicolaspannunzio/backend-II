@@ -64,24 +64,29 @@ router.post("/login", async (req, res) => {
         }
 
         const token = jwt.sign(
-            { user: userFound.user, role: userFound.role }, 
+            { id: userFound._id, role: userFound.role }, 
             process.env.JWT_SECRET || "coderhouse", 
             { expiresIn: "1h" }
         );
 
         res.cookie("coderCookieToken", token, {
             maxAge: 3600000, 
-            httpOnly: true
+            httpOnly: true,
+            //*sameSite: "Lax",
         });
-
+        
+        console.log("Cookie establecida:", token);
         res.redirect("/api/sessions/current");
+        //return res.status(200).send("Login successful");
 
     } catch (error) {
+        console.error(error);
         res.status(500).send("Internal server error"); 
     }
 });
 
 router.get("/profile", passport.authenticate("current", { session: false }), (req, res) => {
+    console.log("Usuario autenticado: ", req.user);
     res.render("profile", { user: req.user.user }); 
 });
 

@@ -11,6 +11,7 @@ const initializePassport = () => {
       },
       async (jwt_payload, done) => {
         try {
+          console.log("Payload JWT:", jwt_payload);
           return done(null, jwt_payload);
         } catch (error) {
           return done(error, false);
@@ -21,7 +22,9 @@ const initializePassport = () => {
 const cookieExtractor = (req) => {
   let token = null;
   if (req && req.cookies) {
+    console.log("Cookies recibidas:", req.cookies);
     token = req.cookies["coderCookieToken"];
+    console.log("Token extraído:", token);
   }
   return token;
 };

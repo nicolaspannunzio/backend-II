@@ -18,7 +18,7 @@ import initializePassport from "./config/passport.config.js";
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 8080;
 
 app.engine("handlebars", handlebars.engine());
 app.set("views", __dirname + "/views");
@@ -27,8 +27,9 @@ app.set("view engine", "handlebars");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use(passport.initialize());
+
 initializePassport();
+app.use(passport.initialize());
 
 app.use(express.static(__dirname + "/public"));
 

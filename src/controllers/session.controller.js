@@ -9,7 +9,7 @@ export const loginUser = async (req, res) => {
     try {
         const user = await userModel.findOne({ email });
 
-        if (!user) {
+        if (!user || !bcrypt.compareSync(password, user.password)) {
             return res.status(404).redirect('/login');
         }
         
@@ -20,6 +20,7 @@ export const loginUser = async (req, res) => {
 
         const token = jwt.sign(
             {
+                id: user._id,
                 email: user.email,
                 role: user.role,
                 first_name: user.first_name,
@@ -32,7 +33,9 @@ export const loginUser = async (req, res) => {
 
         res.cookie("coderCookieToken", token, { 
             maxAge: 3600000, 
-            httpOnly: true
+            httpOnly: true,
+            secure: false,  
+            sameSite: "Lax"
         });
 
         if (!user.cart) {
