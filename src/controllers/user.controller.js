@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import UserModel from '../models/user.model.js';
-import { cartModel } from '../models/cart.model.js';
+import UserModel from '../dao/models/user.model.js';
+import { cartModel } from '../dao/models/cart.model.js';
 
 export const authenticateUser = async (req, res, next) => {
     try {
